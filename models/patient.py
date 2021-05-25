@@ -1,4 +1,4 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 
 
@@ -9,7 +9,9 @@ class HospitalPatient(models.Model):
     _name = "hospital.patient"
     _inherit = ["mail.thread", "mail.activity.mixin"]
     _description = "Patient Details"
+
     name = fields.Char(string='Name', required=True, tracking=True)
+    reference = fields.Char(string='Reference', required=True, copy=False, readonly=True, default=lambda self: _('New'))
     middle_name = fields.Char(string='Middle Name', tracking=True)
     family_name = fields.Char(string="Family Name", tracking=True)
     age = fields.Integer(string='Age', tracking=True)
@@ -43,10 +45,12 @@ class HospitalPatient(models.Model):
         self.state = 'cancel'
 
     @api.model
-    def create(self, values):
-        if not values.get('note'):
-            values['note'] = "New Patient"
-        return super(HospitalPatient, self).create(values)
+    def create(self, vals):
+        if vals.get('reference', _('New')) == _('New'):
+            vals['reference'] = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New')
+        if not vals.get('note'):
+            vals['note'] = "New Patient"
+        return super(HospitalPatient, self).create(vals)
 
     def unlink(self):
         for hospitalPatient in self:
