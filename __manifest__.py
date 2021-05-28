@@ -16,7 +16,10 @@
     'data': [
         'security/ir.model.access.csv',
         'data/data.xml',
-        'views/patient.xml',
+        'views/patient_view.xml',
+        'views/kids_view.xml',
+        'views/adults_view.xml',
+        'views/patient_gender_view.xml',
         'views/sale.xml'
     ],
     'demo': [],
