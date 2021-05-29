@@ -41,9 +41,12 @@
                     <group>
                         <group>
                             <field name="patient_id"/>
-                            <field name="date_appointment"/>
+                            <field name="age"/>
+                            <field name="gender"/>
                         </group>
                         <group>
+                            <field name="date_appointment"/>
+                            <field name="date_appointment_checkup"/>
                             <field name="note"/>
                         </group>
                     </group>
@@ -58,8 +61,6 @@
     </record>
 
 
-
-
     <record id="action_hospital_appointment" model="ir.actions.act_window">
         <field name="name">Appointments</field>
         <field name="type">ir.actions.act_window</field>
@@ -71,7 +72,6 @@
             </p>
         </field>
     </record>
-
 
 
     <menuitem id="menu_appointment_root"

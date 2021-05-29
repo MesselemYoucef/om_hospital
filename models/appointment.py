@@ -23,6 +23,13 @@ class HospitalAppointment(models.Model):
     note = fields.Text(string='Description', tracking=True)
 
     date_appointment = fields.Date(string="Date")
+    date_appointment_checkup = fields.Datetime(string="Checkup")
+    age = fields.Integer(string='Age', related='patient_id.age', tracking=True)
+    gender = fields.Selection([
+        ('male', 'Male'),
+        ('female', 'Female'),
+        ('other', 'Other')
+    ], related="patient_id.gender", tracking=True)
 
     def action_confirm(self):
         self.state = 'confirm'
