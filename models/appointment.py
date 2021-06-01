@@ -10,8 +10,14 @@ class HospitalAppointment(models.Model):
     _inherit = ["mail.thread", "mail.activity.mixin"]
     _description = "Appointments for the patients"
 
-    reference = fields.Char(string='Reference', required=True, copy=False, readonly=True, default=lambda self: _('New'))
-    patient_id = fields.Many2one('hospital.patient', string="Patient Name", required=True)
+    reference = fields.Char(string='Reference',
+                            required=True,
+                            copy=False,
+                            readonly=True,
+                            default=lambda self: _('New'))
+    patient_id = fields.Many2one('hospital.patient',
+                                 string="Patient Name",
+                                 required=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('confirm', 'Confirm'),
@@ -29,7 +35,7 @@ class HospitalAppointment(models.Model):
         ('male', 'Male'),
         ('female', 'Female'),
         ('other', 'Other')
-    ], related="patient_id.gender", tracking=True)
+    ], tracking=True)
 
     def action_confirm(self):
         self.state = 'confirm'
