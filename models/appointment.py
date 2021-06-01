@@ -54,3 +54,15 @@ class HospitalAppointment(models.Model):
         if vals.get('reference', _('New')) == _('New'):
             vals['reference'] = self.env['ir.sequence'].next_by_code('hospital.appointment') or _('New')
         return super(HospitalAppointment, self).create(vals)
+
+    @api.onchange('patient_id')
+    def onchange_patient_id(self):
+        """Observing the change of patient_id field"""
+        if self.patient_id:
+            if self.patient_id.gender:
+                self.gender = self.patient_id.gender
+        else:
+            self.gender = ''
+
+        if self.patient_id.note:
+            self.note = self.patient_id.note
