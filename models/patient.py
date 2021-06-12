@@ -31,18 +31,40 @@ class HospitalPatient(models.Model):
 
     note = fields.Text(string='Description', tracking=True)
 
+    appointment_count = fields.Integer(string="No. Appointments", compute="_compute_appointment_count")
+
+    height = fields.Float(string="Height(m)")
+    weight = fields.Float(string="Weight(kg)")
+    bmi = fields.Float(string="BMI", compute="_compute_bmi")
+
     def action_confirm(self):
-        print("button pressed")
-        self.state = 'confirm'
+        for rec in self:
+            rec.state = 'confirm'
 
     def action_done(self):
-        self.state = 'done'
+        for rec in self:
+            rec.state = 'done'
 
     def action_set_draft(self):
-        self.state = 'draft'
+        for rec in self:
+            rec.state = 'draft'
 
     def action_cancel(self):
-        self.state = 'cancel'
+        for rec in self:
+            rec.state = 'cancel'
+
+    def _compute_appointment_count(self):
+        # we need to initiate an instance of the class hospital.appointment and search inside it the patient id
+        for record in self:
+            appointment_count = record.env['hospital.appointment'].search_count([("patient_id", "=", record.id)])
+            record.appointment_count = appointment_count
+
+    def _compute_bmi(self):
+        for rec in self:
+            if rec.height and rec.weight:
+                rec.bmi = rec.weight / rec.height ** 2
+            else:
+                rec.bmi = 0.0
 
     @api.model
     def create(self, vals):
