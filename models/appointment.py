@@ -30,7 +30,7 @@ class HospitalAppointment(models.Model):
 
     date_appointment = fields.Date(string="Date")
     date_appointment_checkup = fields.Datetime(string="Checkup")
-    age = fields.Integer(string='Age', related='patient_id.age', tracking=True)
+    age = fields.Integer(string='Age', related='patient_id.age', tracking=True )
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female'),

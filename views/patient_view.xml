@@ -11,7 +11,7 @@
                 <field name="name"/>
                 <field name="family_name"/>
                 <field name="gender"/>
-                <field name="age"/>
+                <field name="appointment_count"/>
                 <field name="responsible_id"/>
                 <field name="state"/>
             </tree>
@@ -49,10 +49,14 @@
                             <field name="responsible_id"/>
                             <field name="middle_name"/>
                             <field name="family_name"/>
+                            <field name="appointment_count"/>
                         </group>
                         <group>
                             <field name="age"/>
                             <field name="gender" invisible="context.get('hide_gender')"/>
+                            <field name="height"/>
+                            <field name="weight"/>
+                            <field name="bmi"/>
                             <field name="note"/>
                         </group>
                     </group>
