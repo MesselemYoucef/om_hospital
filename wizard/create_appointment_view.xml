@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <form string="Create New Appointment">
                 <group class="oe_title">
-                    <field name="name"/>
+                    <field name="appointment_date"/>
                     <field name="patient_id"/>
                 </group>
                 <footer>

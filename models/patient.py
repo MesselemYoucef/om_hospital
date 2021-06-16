@@ -19,7 +19,7 @@ class HospitalPatient(models.Model):
         ('male', 'Male'),
         ('female', 'Female'),
         ('other', 'Other')
-    ], tracking=True)
+    ], tracking=True, default="male", required=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('confirm', 'Confirm'),
@@ -79,3 +79,14 @@ class HospitalPatient(models.Model):
             if hospitalPatient.state == 'confirm':
                 raise UserError('You cannot delete this record because it is confirmed')
         return super(HospitalPatient, self).unlink()
+
+    @api.model
+    def default_get(self, fields):
+        """ This is a default function to get the values for the gender as well as the New field
+        """
+
+        res = super(HospitalPatient, self).default_get(fields)
+        print(fields)
+        res['gender'] = 'other'
+        print(res['gender'])
+        return res
