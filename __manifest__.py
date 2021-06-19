@@ -11,12 +11,13 @@
     'images': [],
     'depends': [
         'sale',
-        "mail"
+        'mail'
     ],
     'data': [
         'security/ir.model.access.csv',
         'data/data.xml',
         'wizard/create_appointment_view.xml',
+        'wizard/search_appointment_view.xml',
         'views/patient_view.xml',
         'views/kids_view.xml',
         'views/adults_view.xml',

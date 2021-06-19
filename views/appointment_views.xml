@@ -89,5 +89,11 @@
               name="Create Appointment"
               parent="menu_appointment_root"
               action="action_create_appointment"
-              sequence="1"/>
+              sequence="2"/>
+
+    <menuitem id="hospital_search_appointment"
+              name="Search Appointment"
+              parent="menu_appointment_root"
+              action="action_search_appointment"
+              sequence="30"/>
 </odoo>
