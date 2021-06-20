@@ -9,7 +9,9 @@
                     <field name="patient_id"/>
                 </group>
                 <footer>
-                    <button name="action_search_appointment_m1" string="Search" type="object" class="btn-primary"/>
+                    <button name="action_search_appointment_m1" string="Search Method 1" type="object" class="btn-primary"/>
+                    <button name="action_search_appointment_m2" string="Search Method 2" type="object" class="btn-primary"/>
+                    <button name="action_search_appointment_m3" string="Search Method 3" type="object" class="btn-primary"/>
                 </footer>
             </form>
         </field>
