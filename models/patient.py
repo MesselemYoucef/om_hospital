@@ -36,6 +36,7 @@ class HospitalPatient(models.Model):
     height = fields.Float(string="Height(m)")
     weight = fields.Float(string="Weight(kg)")
     bmi = fields.Float(string="BMI", compute="_compute_bmi")
+    image = fields.Binary(string="Patient Image")
 
     def action_confirm(self):
         for rec in self:

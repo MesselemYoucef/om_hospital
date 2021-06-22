@@ -38,6 +38,7 @@
                     <button id="button_create_appointment" name="%(om_hospital.action_create_appointment)d" string="Create Appointment" type="action" class="btn-primary" />
                 </header>
                 <sheet>
+                    <field name ="image" widget="image" class="oe_avatar"/>
                     <div class="oe_title">
                         <h1>
                             <field name="reference" readonly="1"/>
