@@ -23,7 +23,8 @@
         'views/adults_view.xml',
         'views/patient_gender_view.xml',
         'views/sale.xml',
-        'views/appointment_views.xml'
+        'views/appointment_views.xml',
+        'views/doctor_view.xml',
     ],
     'demo': [],
     'qweb': [],
