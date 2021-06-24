@@ -13,8 +13,9 @@
                 </header>
                 <field name="reference"/>
                 <field name="patient_id"/>
-                <field name="note"/>
-
+                <field name="age" optional="show"/>
+                <field name="gender" optional="show"/>
+                <field name="note" optional="show"/>
             </tree>
         </field>
     </record>
