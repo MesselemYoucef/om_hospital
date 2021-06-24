@@ -34,6 +34,7 @@ class HospitalAppointment(models.Model):
         ('female', 'Female'),
         ('other', 'Other')
     ], tracking=True)
+    doctor_id = fields.Many2one("hospital.doctor", string="Doctor", required=True)
 
     def action_confirm(self):
         self.state = 'confirm'
