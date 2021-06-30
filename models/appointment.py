@@ -9,6 +9,7 @@ class HospitalAppointment(models.Model):
     _name = "hospital.appointment"
     _inherit = ["mail.thread", "mail.activity.mixin"]
     _description = "Appointments for the patients"
+    _order = "reference desc"
 
     reference = fields.Char(string='Reference',
                             required=True,

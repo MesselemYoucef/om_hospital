@@ -76,7 +76,7 @@
         <field name="name">hospital.patient.kanban</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <kanban>
+            <kanban default_order = "reference asc">
                 <field name="name"/>
                 <field name="family_name"/>
                 <field name="gender"/>
