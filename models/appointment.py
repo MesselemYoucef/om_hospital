@@ -28,6 +28,7 @@ class HospitalAppointment(models.Model):
     )
 
     note = fields.Text(string='Description', tracking=True)
+    prescription = fields.Text(string='Prescription', tracking=True)
     appointment_date = fields.Datetime(string="Appointment Date")
     age = fields.Integer(string='Age', related='patient_id.age', tracking=True )
     gender = fields.Selection([

@@ -6,7 +6,7 @@
         <field name="name">hospital.appointment.tree</field>
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
-            <tree multi_edit = "1">
+            <tree multi_edit="1">
                 <header>
                     <button name="action_done" string="Mark As Done" class="btn-primary"
                             type="object"/>
@@ -54,9 +54,22 @@
                         <group>
                             <field name="doctor_id"/>
                             <field name="appointment_date"/>
-                            <field name="note"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Doctor Prescription" name="doctor_prescription">
+                            <group>
+                                <field name="prescription"/>
+                            </group>
+                        </page>
+                        <page string="Medicine" name="medicine">
+                        </page>
+                        <page string="Other Info" name="other_info">
+                            <group>
+                                <field name="note"/>
+                            </group>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids"/>
