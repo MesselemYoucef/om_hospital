@@ -63,6 +63,7 @@
                             </group>
                         </page>
                         <page string="Medicine" name="medicine">
+                            <field name="prescription_line_ids"></field>
                         </page>
                         <page string="Other Info" name="other_info">
                             <group>

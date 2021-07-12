@@ -29,6 +29,8 @@ class HospitalAppointment(models.Model):
 
     note = fields.Text(string='Description', tracking=True)
     prescription = fields.Text(string='Prescription', tracking=True)
+    prescription_line_ids = fields.One2many('appointment.prescription.lines', 'appointment_id',
+                                            String="Prescription Lines")
     appointment_date = fields.Datetime(string="Appointment Date")
     age = fields.Integer(string='Age', related='patient_id.age', tracking=True )
     gender = fields.Selection([
@@ -67,3 +69,16 @@ class HospitalAppointment(models.Model):
 
         if self.patient_id.note:
             self.note = self.patient_id.note
+
+
+class AppointmentPrescriptionLines(models.Model):
+    _name = "appointment.prescription.lines"
+    _description = "Appointment Prescription Lines"
+
+    name = fields.Char(string="Medicine")
+    qty = fields.Integer(string="Quantity")
+    appointment_id = fields.Many2one('hospital.appointment', String="Appointment")
+
+
+
+
