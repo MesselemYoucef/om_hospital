@@ -10,6 +10,7 @@ class HospitalAppointment(models.Model):
     _inherit = ["mail.thread", "mail.activity.mixin"]
     _description = "Appointments for the patients"
     _order = "reference desc"
+    _rec_name = "reference"
 
     reference = fields.Char(string='Reference',
                             required=True,
@@ -78,6 +79,10 @@ class AppointmentPrescriptionLines(models.Model):
     name = fields.Char(string="Medicine")
     qty = fields.Integer(string="Quantity")
     appointment_id = fields.Many2one('hospital.appointment', String="Appointment")
+    # appointment_reference = fields.Char(Related="appointment_id.reference", String="Appointment")
+
+
+
 
 
 

@@ -63,7 +63,23 @@
                             </group>
                         </page>
                         <page string="Medicine" name="medicine">
-                            <field name="prescription_line_ids"></field>
+                            <field name="prescription_line_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="qty"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="qty"/>
+                                        </group>
+                                        <group>
+                                            <field name="appointment_id"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
                         </page>
                         <page string="Other Info" name="other_info">
                             <group>
