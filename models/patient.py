@@ -29,6 +29,7 @@ class HospitalPatient(models.Model):
         string='Status', default='draft', readonly=False, tracking=True
     )
     responsible_id = fields.Many2one('res.partner', string="Responsible")
+    appointment_ids = fields.One2many("hospital.appointment", "patient_id", string="Appointments")
 
     note = fields.Text(string='Description', tracking=True)
 
@@ -92,3 +93,5 @@ class HospitalPatient(models.Model):
         res['gender'] = 'other'
         print(res['gender'])
         return res
+
+
