@@ -1,5 +1,6 @@
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
+from odoo.exceptions import ValidationError
 
 
 # this is a class for the hospital patient
@@ -70,6 +71,12 @@ class HospitalAppointment(models.Model):
 
         if self.patient_id.note:
             self.note = self.patient_id.note
+
+    def unlink(self):
+        for record in self:
+            if record.state == "confirm" or record.state == "done":
+                raise ValidationError(_"You cannot delete record %s in state " % self.reference)
+        return super(HospitalAppointment, self).unlink()
 
 
 class AppointmentPrescriptionLines(models.Model):

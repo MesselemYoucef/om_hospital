@@ -9,7 +9,9 @@ class Doctor(models.Model):
     _rec_name = "doctor_name"
 
     doctor_name = fields.Char(string="Name", required=True, tracking=True)
-    age = fields.Integer(string="Age", tracking=True)
+
+    # in order to not copy the age in the default function we have set copy attribute to False
+    age = fields.Integer(string="Age", tracking=True, copy=False)
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female'),
@@ -17,3 +19,12 @@ class Doctor(models.Model):
     ], required=True, default="male", tracking=True)
     note = fields.Text(string="Description")
     image = fields.Binary(string="Patient Image")
+
+    @api.returns('self', lambda value: value.id)
+    def copy(self, default=None):
+        if default is None:
+            default = {}
+        if not default.get('doctor_name'):
+            default['doctor_name'] = _("%s (Copy)", self.doctor_name)
+        default['note'] = "Please enter the description"
+        return super(Doctor, self).copy(default)
