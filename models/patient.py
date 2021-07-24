@@ -1,5 +1,6 @@
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
+from odoo.exceptions import ValidationError
 
 
 # this is a class for the hospital patient
@@ -10,6 +11,14 @@ class HospitalPatient(models.Model):
     _inherit = ["mail.thread", "mail.activity.mixin"]
     _description = "Patient Details"
     _order = "reference desc"
+
+    @api.model
+    def default_get(self, fields):
+        """ This is a default function to get the values for the gender as well as the New field
+        """
+        res = super(HospitalPatient, self).default_get(fields)
+        res['gender'] = 'other'
+        return res
 
     name = fields.Char(string='Name', required=True, tracking=True)
     reference = fields.Char(string='Reference', required=True, copy=False, readonly=True, default=lambda self: _('New'))
@@ -83,15 +92,25 @@ class HospitalPatient(models.Model):
                 raise UserError('You cannot delete this record because it is confirmed')
         return super(HospitalPatient, self).unlink()
 
-    @api.model
-    def default_get(self, fields):
-        """ This is a default function to get the values for the gender as well as the New field
-        """
 
-        res = super(HospitalPatient, self).default_get(fields)
-        print(fields)
-        res['gender'] = 'other'
-        print(res['gender'])
-        return res
 
+    @api.constrains('name')
+    def check_name(self):
+        for rec in self:
+            patients = self.env['hospital.patient'].search([("name", "=", rec.name), ("id", "!=", rec.id)])
+            if patients:
+                raise ValidationError (_("The name %s already exists, please try another name" % rec.name))
+
+    @api.constrains('age')
+    def check_age(self):
+        for rec in self:
+            if rec.age < 1:
+                raise ValidationError (_("Age must be more than 0"))
+
+    def name_get(self):
+        result = []
+        for rec in self:
+            name = '['+rec.reference+'] ' +rec.name
+            result.append((rec.id, name))
+        return result
 
