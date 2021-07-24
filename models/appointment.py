@@ -21,6 +21,7 @@ class HospitalAppointment(models.Model):
     patient_id = fields.Many2one('hospital.patient',
                                  string="Patient Name",
                                  required=True, stored=True)
+    # This is a selection field
     state = fields.Selection([
         ('draft', 'Draft'),
         ('confirm', 'Confirm'),
