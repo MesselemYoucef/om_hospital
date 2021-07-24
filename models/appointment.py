@@ -75,7 +75,7 @@ class HospitalAppointment(models.Model):
     def unlink(self):
         for record in self:
             if record.state == "confirm" or record.state == "done":
-                raise ValidationError(_"You cannot delete record %s in state " % self.reference)
+                raise ValidationError_  ("You cannot delete record %s in state " % self.reference)
         return super(HospitalAppointment, self).unlink()
 
 
