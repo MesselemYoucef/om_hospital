@@ -92,8 +92,6 @@ class HospitalPatient(models.Model):
                 raise UserError('You cannot delete this record because it is confirmed')
         return super(HospitalPatient, self).unlink()
 
-
-
     @api.constrains('name')
     def check_name(self):
         for rec in self:
