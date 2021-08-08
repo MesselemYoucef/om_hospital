@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+<!--    Action for generating a pdf report-->
     <record id="report_patient_id_card" model="ir.actions.report">
         <field name="name">Patient Card</field>
         <field name="model">hospital.patient</field>
