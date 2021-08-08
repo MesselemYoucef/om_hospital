@@ -11,7 +11,8 @@
     'images': [],
     'depends': [
         'sale',
-        'mail'
+        'mail',
+        'report_xlsx'
     ],
     'data': [
         'security/ir.model.access.csv',
