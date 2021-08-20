@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+   # Server action for the appointment
+    <record id="action_confirm_appointments" model="ir.actions.server">
+        <field name="name">Confirm Appointments</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_hospital_appointment"/>
+        # The binding model allows the creation of the contextual action
+        <field name="binding_model_id" ref="model_hospital_appointment"/>
+        <field name="state">code</field>
+        <field name="code">records.action_confirm()</field>
+    </record>
+
     # Tree View
     <record id="view_appointment_tree" model="ir.ui.view">
         <field name="name">hospital.appointment.tree</field>
@@ -16,7 +27,7 @@
                 <field name="doctor_id"/>
                 <field name="age" optional="show"/>
                 <field name="gender" optional="show"/>
-                <field name="note" optional="show"/>
+                <field name="state" optional="show"/>
             </tree>
         </field>
     </record>
