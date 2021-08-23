@@ -7,11 +7,12 @@ class CreateAppointmentWizard(models.TransientModel):
 
     appointment_date = fields.Datetime(string="Appointment Date", required=False)
     patient_id = fields.Many2one("hospital.patient", string="Patient", required=True)
+    doctor_id = fields.Many2one("hospital.doctor", string="Doctor", required=True)
 
     def action_create_appointment(self):
         values = {
             'patient_id': self.patient_id.id,
-            'doctor_id': 2,
+            'doctor_id': self.doctor_id.id,
             'appointment_date': self.appointment_date
         }
 

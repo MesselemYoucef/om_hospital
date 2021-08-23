@@ -8,6 +8,7 @@
                 <group class="oe_title">
                     <field name="appointment_date"/>
                     <field name="patient_id"/>
+                    <field name="doctor_id"/>
                 </group>
                 <footer>
                     <button name="action_create_appointment" string="Create" type="object" class="btn-primary"/>
