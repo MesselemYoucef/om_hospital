@@ -23,8 +23,8 @@
         'views/kids_view.xml',
         'views/adults_view.xml',
         'views/patient_gender_view.xml',
-        'views/sale.xml',
         'views/appointment_views.xml',
+        'views/sale.xml',
         'views/doctor_view.xml',
         'report/patient_card.xml',
         'report/report.xml'

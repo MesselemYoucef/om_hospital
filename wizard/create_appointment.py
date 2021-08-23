@@ -11,6 +11,7 @@ class CreateAppointmentWizard(models.TransientModel):
     def action_create_appointment(self):
         values = {
             'patient_id': self.patient_id.id,
+            'doctor_id': 2,
             'appointment_date': self.appointment_date
         }
 

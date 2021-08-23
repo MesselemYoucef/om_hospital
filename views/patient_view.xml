@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
 
+
+        <record id="action_create_appointments" model="ir.actions.server">
+            <field name="name">Create Appointment</field>
+            <field name="model_id" ref="om_hospital.model_hospital_patient"/>
+            <field name="binding_model_id" ref="om_hospital.model_hospital_patient"/>
+             <field name="binding_view_types">form</field>
+            <field name="state">code</field>
+            <field name="code">
+                if record:
+                    action_values = env.ref('om_hospital.action_create_appointment').sudo().read()[0]
+                    action_values.update({'context': env.context})
+                    action = action_values
+            </field>
+        </record>
+
         # Tree View
         <record id="view_patient_tree" model="ir.ui.view">
             <field name="name">hospital.patient.tree</field>
