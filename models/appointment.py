@@ -79,6 +79,14 @@ class HospitalAppointment(models.Model):
                 raise ValidationError(_("You cannot delete record %s in state " % self.reference))
         return super(HospitalAppointment, self).unlink()
 
+    def action_url(self):
+        return {
+            'type': 'ir.actions.act_url',
+            'target': 'new',
+            'url': "https://www.google.com",
+        }
+
+
 
 class AppointmentPrescriptionLines(models.Model):
     _name = "appointment.prescription.lines"
