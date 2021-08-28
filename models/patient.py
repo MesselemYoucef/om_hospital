@@ -112,3 +112,12 @@ class HospitalPatient(models.Model):
             result.append((rec.id, name))
         return result
 
+    def action_open_appointments(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Appointments_Search',
+            'res_model': 'hospital.appointment',
+            'domain': [("patient_id", "=", self.id)],
+            'view_mode': 'tree,form',
+            'target': 'current'
+        }
