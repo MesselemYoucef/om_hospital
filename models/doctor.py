@@ -19,6 +19,7 @@ class Doctor(models.Model):
     ], required=True, default="male", tracking=True)
     note = fields.Text(string="Description")
     image = fields.Binary(string="Patient Image")
+    appointment_count = fields.Integer(string="Appointment Count", compute="_compute_appointment_count")
 
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):
@@ -28,3 +29,9 @@ class Doctor(models.Model):
             default['doctor_name'] = _("%s (Copy)", self.doctor_name)
         default['note'] = "Please enter the description"
         return super(Doctor, self).copy(default)
+
+
+    def _compute_appointment_count(self):
+        for rec in self:
+            appointment_count = self.env['hospital.appointment'].search_count([('doctor_id', '=', rec.id)])
+            rec.appointment_count = appointment_count
