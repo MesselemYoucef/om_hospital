@@ -5,6 +5,16 @@ class CreateAppointmentWizard(models.TransientModel):
     _name = "create.appointment.wizard"
     _description = "Module to create an appointment wizard"
 
+
+    @api.model
+    def default_get(self, fields):
+        """to get the default info when creating a new appointment"""
+        res = super(CreateAppointmentWizard, self).default_get(fields)
+        print(self._context)
+        if self._context.get('active_id'):
+            res['patient_id'] = self._context.get('active_id')
+        return res
+
     appointment_date = fields.Datetime(string="Appointment Date", required=False)
     patient_id = fields.Many2one("hospital.patient", string="Patient", required=True)
     doctor_id = fields.Many2one("hospital.doctor", string="Doctor", required=True)
@@ -48,3 +58,4 @@ class CreateAppointmentWizard(models.TransientModel):
             'target': 'current',
         }
         return action
+

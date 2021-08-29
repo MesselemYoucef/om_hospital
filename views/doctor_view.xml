@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+<!--    Action for creating new appointments-->
     <record id="action_open_appointments" model="ir.actions.act_window">
         <field name="name">Appointments</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hospital.appointment</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('doctor_id','=',',active_id')]</field>
-        <field name="context">{}</field>
+        <field name="context">{'default_doctor_id': active_id}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create The first appointment
@@ -15,7 +16,7 @@
         </field>
     </record>
 
-    # Tree View
+<!--     Tree View-->
     <record id="view_doctor_tree" model="ir.ui.view">
         <field name="name">hospital.doctor.tree</field>
         <field name="model">hospital.doctor</field>
@@ -29,7 +30,7 @@
         </field>
     </record>
 
-    # Form View
+<!--    Form View-->
     <record id="view_doctor_form" model="ir.ui.view">
         <field name="name">hospital.doctor.form</field>
         <field name="model">hospital.doctor</field>
