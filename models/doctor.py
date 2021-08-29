@@ -20,6 +20,7 @@ class Doctor(models.Model):
     note = fields.Text(string="Description")
     image = fields.Binary(string="Patient Image")
     appointment_count = fields.Integer(string="Appointment Count", compute="_compute_appointment_count")
+    active = fields.Boolean(string="Active", default=True)
 
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):
