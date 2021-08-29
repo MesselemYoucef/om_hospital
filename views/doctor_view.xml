@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-<!--    Action for creating new appointments-->
+    <!--    Action for creating new appointments-->
     <record id="action_open_appointments" model="ir.actions.act_window">
         <field name="name">Appointments</field>
         <field name="type">ir.actions.act_window</field>
@@ -16,7 +16,7 @@
         </field>
     </record>
 
-<!--     Tree View-->
+    <!--     Tree View-->
     <record id="view_doctor_tree" model="ir.ui.view">
         <field name="name">hospital.doctor.tree</field>
         <field name="model">hospital.doctor</field>
@@ -30,13 +30,15 @@
         </field>
     </record>
 
-<!--    Form View-->
+    <!--    Form View-->
     <record id="view_doctor_form" model="ir.ui.view">
         <field name="name">hospital.doctor.form</field>
         <field name="model">hospital.doctor</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
                     <div class="oe_button_box" name="button_box">
                         <button name="%(om_hospital.action_open_appointments)d" type="action" class="oe_stat_button"
                                 icon="fa-calendar">
@@ -46,6 +48,7 @@
                             </div>
                         </button>
                     </div>
+
                     <!--                    <div class="oe_title">-->
                     <!--                        <h1>-->
                     <!--                            <field name="reference" readonly="1"/>-->
@@ -73,7 +76,7 @@
     </record>
 
 
-<!--    Search View-->
+    <!--    Search View-->
     <record id="view_doctor_serch" model="ir.ui.view">
         <field name="name">hospital.doctor.search</field>
         <field name="model">hospital.doctor</field>
