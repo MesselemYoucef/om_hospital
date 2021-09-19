@@ -31,7 +31,6 @@ class Doctor(models.Model):
         default['note'] = "Please enter the description"
         return super(Doctor, self).copy(default)
 
-
     def _compute_appointment_count(self):
         for rec in self:
             appointment_count = self.env['hospital.appointment'].search_count([('doctor_id', '=', rec.id)])
