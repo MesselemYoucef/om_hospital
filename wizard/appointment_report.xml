@@ -6,18 +6,18 @@
         <field name="arch" type="xml">
             <form string="Appointment Report">
                 <group>
-                    <group class="oe_title">
+                    <group>
                         <field name="patient_id"/>
                     </group>
-                    <group class="oe_title">
+                    <group>
                         <field name="date_from"/>
                         <field name="date_to"/>
                     </group>
                 </group>
-
-                <!--                <footer>-->
-                <!--                    <button name="" string="Search Report" type="object" class="btn-primary"/>-->
-                <!--                </footer>-->
+                <footer>
+                    <button name="action_print_report" type="object" string = "Print" class="btn-primary"/>
+                    <button  string = "Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
             </form>
         </field>
     </record>
