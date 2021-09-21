@@ -169,4 +169,15 @@
               parent="menu_appointment_root"
               action="action_search_appointment"
               sequence="30"/>
+
+    <menuitem id="menu_appointment_report"
+              name="Reports"
+              parent="menu_hospital_root"
+              sequence="50"/>
+
+    <menuitem id="appointment_report_"
+              name="Appointments Report"
+              parent="menu_appointment_report"
+              action="action_appointment_report"
+              sequence="40"/>
 </odoo>
