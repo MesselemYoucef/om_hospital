@@ -41,34 +41,46 @@
                     <table class="table table-bordered mt32">
                         <thead>
                             <tr>
+                                <th name="th_no" class="text-left">
+                                    <span>No.</span>
+                                </th>
                                 <th name="th_reference" class="text-left">
                                     <span>Reference</span>
                                 </th>
                                 <th name="th_age" class="text-left">
                                     <span>Age</span>
                                 </th>
+                                <th name="th_note" class="text-left">
+                                    <span>Description</span>
+                                </th>
                             </tr>
                         </thead>
-<!--                        <t t-set="appointment_count" t-value="0"/>-->
+                        <t t-set="appointment_count" t-value="0"/>
                         <t t-foreach="appointments" t-as="line">
-<!--                            <t t-set="appointment_count" t-value="appointment_count + 1"/>-->
+                            <t t-set="appointment_count" t-value="appointment_count + 1"/>
                             <tr>
+                                <td>
+                                    <span t-esc="appointment_count"/>
+                                </td>
                                 <td>
                                     <span t-esc="line['reference']"/>
                                 </td>
                                 <td>
                                     <span t-esc="line['age']"/>
                                 </td>
+                                <td>
+                                    <span t-esc="line['note']"/>
+                                </td>
                             </tr>
                         </t>
-<!--                        <tr>-->
-<!--                            <td>-->
-<!--                                <strong>Total Appointments</strong>-->
-<!--                            </td>-->
-<!--                            <td>-->
-<!--                                <t t-esc="appointment_count"/>-->
-<!--                            </td>-->
-<!--                        </tr>-->
+                        <tr>
+                            <td>
+                                <strong>Total Appointments</strong>
+                            </td>
+                            <td>
+                                <t t-esc="appointment_count"/>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </t>
