@@ -20,6 +20,7 @@
         'wizard/create_appointment_view.xml',
         'wizard/search_appointment_view.xml',
         'wizard/appointment_report.xml',
+        'wizard/all_patient_report_view.xml',
         'views/patient_view.xml',
         'views/kids_view.xml',
         'views/adults_view.xml',
@@ -29,7 +30,8 @@
         'views/doctor_view.xml',
         'report/patient_card.xml',
         'report/report.xml',
-        'report/appointment_details.xml'
+        'report/appointment_details.xml',
+        'report/all_patient_list.xml'
     ],
     'demo': [],
     'qweb': [],

@@ -11,10 +11,10 @@ class AppointmentReport(models.TransientModel):
     def action_print_report(self):
         domain = []
         patient_id = self.patient_id
-        if patient_id:
-            domain += [('patient_id', '=', patient_id.id)]
         date_from = self.date_from
         date_to = self.date_to
+        if patient_id:
+            domain += [('patient_id', '=', patient_id.id)]
         if date_from:
             domain += [('appointment_date', '>=', date_from)]
         if date_to:

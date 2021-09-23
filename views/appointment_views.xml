@@ -180,4 +180,10 @@
               parent="menu_appointment_report"
               action="action_appointment_report"
               sequence="40"/>
+
+    <menuitem id="patient_report_"
+              name="Patient Report"
+              parent="menu_appointment_report"
+              action="action_patient_report"
+              sequence="50"/>
 </odoo>

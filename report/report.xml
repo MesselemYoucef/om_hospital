@@ -38,4 +38,16 @@
     </record>
 
 
+    <!--    Action for generating a pdf report for Patients-->
+    <record id="action_report_patients" model="ir.actions.report">
+        <field name="name">Patients Report</field>
+        <field name="model">patient.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">om_hospital.report_all_patient_list</field>
+        <field name="report_file">om_hospital.report_all_patient_list</field>
+        <field name="binding_model_id" ref="model_patient_report_wizard"/>
+        <field name="binding_type">report</field>
+    </record>
+
+
 </odoo>
