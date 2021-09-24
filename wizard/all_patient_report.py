@@ -14,6 +14,7 @@ class PatientReportWizard(models.TransientModel):
     age = fields.Integer(string="Age")
 
     def action_print_report(self):
+        """Send the order for the report_action to print a report according to the data sent"""
         data = {
             'form_data': self.read()[0],
         }

@@ -28,6 +28,7 @@
         'views/appointment_views.xml',
         'views/sale.xml',
         'views/doctor_view.xml',
+        'views/menus.xml',
         'report/patient_card.xml',
         'report/report.xml',
         'report/appointment_details.xml',
