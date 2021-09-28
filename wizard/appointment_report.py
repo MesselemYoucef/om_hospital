@@ -1,5 +1,6 @@
 from odoo import api, fields, models, _
 
+
 class AppointmentReport(models.TransientModel):
     _name = "appointment.report.wizard"
     _description = "Wizard that falicitates retrieving appointments"
@@ -26,3 +27,6 @@ class AppointmentReport(models.TransientModel):
             'appointments': appointments
         }
         return self.env.ref('om_hospital.action_report_appointment').report_action(self, data=data)
+
+    def action_print_excel(self):
+        print("action pressed!!!!!!!!!!")
