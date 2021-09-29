@@ -50,4 +50,16 @@
     </record>
 
 
+        <!--    Action for generating an excel report for Patients-->
+
+    <record id="report_patient_appointment_xlsx" model="ir.actions.report">
+        <field name="name">Patient Appointment Excel</field>
+        <field name="model">appointment.report.wizard</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">om_hospital.report_patient_appointment_xlsx</field>
+        <field name="report_file">om_hospital.report_patient_appointment_xlsx</field>
+        <!--            <field name="print_report_name">'Production Order - %s' % object.name</field>-->
+        <field name="binding_type">report</field>
+    </record>
+
 </odoo>

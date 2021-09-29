@@ -28,5 +28,20 @@ class AppointmentReport(models.TransientModel):
         }
         return self.env.ref('om_hospital.action_report_appointment').report_action(self, data=data)
 
-    def action_print_excel(self):
-        print("action pressed!!!!!!!!!!")
+    def action_print_excel_report(self):
+        domain = []
+        patient_id = self.patient_id
+        date_from = self.date_from
+        date_to = self.date_to
+        if patient_id:
+            domain += [('patient_id', '=', patient_id.id)]
+        if date_from:
+            domain += [('appointment_date', '>=', date_from)]
+        if date_to:
+            domain += [('appointment_date', '<=', date_to)]
+        appointments = self.env['hospital.appointment'].search_read(domain)
+        data = {
+            'appointments': appointments,
+            'form_data': self.read()[0]
+        }
+        return self.env.ref('om_hospital.report_patient_appointment_xlsx').report_action(self, data=data)
